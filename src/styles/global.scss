@@ -1,0 +1,83 @@
+:root{
+    --primary-color: #FF577F;
+    --primary-hover: #FF427F;
+    --primary-negative: #59323F;
+
+    --primary-grey: #121214;
+    --secondary-grey: #212529;
+    --tertiary-grey: #868E96;
+    --quaternary-grey: #F8F9FA;
+
+    --sucess: #3FE864;
+    --error: #E83F5B;
+}
+
+*{
+    font-family: "Inter";
+    color: var(--quaternary-grey);
+}
+
+body{
+    background-color: var(--primary-grey);
+}
+
+#root{
+    height: 100%;
+}
+
+h1, h2{
+    font-weight: bold;
+}
+
+h1{
+    font-size: 1.125rem;
+}
+
+h2{
+    font-size: 1rem;
+}
+
+p{ 
+    font-size: 1rem;
+}
+
+span, label{
+    font-size: 0.75rem;
+}
+
+button{
+    color: white;
+    border-radius: 0.25rem;
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+    font-size: 1rem;
+
+    &:hover{
+        background-color: var(--primary-hover);
+    }
+
+    &:disabled{
+        background-color: var(--tertiary-grey);
+    }
+}
+
+input, select{
+    background-color: #343B41;
+    padding: 0.5rem;
+    outline: none;
+    border: 1px solid var(--quaternary-grey);
+    border-radius: 0.25rem;
+    font-size: 1rem;
+
+    &::placeholder{
+        color: #868E96;
+    }
+}
+
+select, option {
+    color: #868E96;
+}
+
+.Toastify__toast-body div{
+    color: var(--primary-grey);
+}

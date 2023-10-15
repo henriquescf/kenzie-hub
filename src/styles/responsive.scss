@@ -1,0 +1,12 @@
+@media only screen and (max-width: 768px) {
+    .dashboard-header__primary, .dashboard-header__secondary{
+        width: 90% !important;
+    }
+
+    .dashboard-header__secondary {
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: baseline !important;
+        gap: 0.625rem !important;
+    }
+}
