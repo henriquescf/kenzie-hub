@@ -1,0 +1,29 @@
+import { useNavigate } from "react-router-dom"
+
+export const DashboardHeader = ({user, setUser}) => {
+
+    const navigate = useNavigate()
+
+    const handleLogout = (e) => {
+        e.preventDefault()
+        localStorage.removeItem("@User:Token")
+        setUser(null)
+        navigate("/")
+    }
+
+    return(
+        <header className="dashboard-header">
+            <div className="dashboard-header__primary">
+                <img src="/Logo.svg"/>
+                <button onClick={handleLogout}>Sair</button>
+            </div>
+
+            <div className="dasboard-header__secondary-wrap">
+                <div className="dashboard-header__secondary">
+                    <h1>Olá, {user.name}</h1>
+                    <span>{user.course_module}</span>
+                </div>
+            </div>
+        </header>
+    )
+}
