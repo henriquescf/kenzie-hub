@@ -1,7 +1,10 @@
-import { useNavigate } from "react-router-dom"
-import { LoginForm } from "../components/LoginForm"
 import "../styles/login.scss"
+import { useNavigate } from "react-router-dom"
 import { useEffect } from "react"
+import { LoginContent } from "../components/LoginContent"
+import { LoginHeader } from "../components/LoginContent/LoginHeader"
+import { LoginMain } from "../components/LoginContent/LoginMain"
+import { LoginForm } from "../components/LoginContent/LoginMain/LoginForm"
 
 export const Login = ({setUser}) => {
 
@@ -15,14 +18,11 @@ export const Login = ({setUser}) => {
       }, [])
       
     return (
-        <div className="login-content">
-            <header className="login-header">
-                <img src="/Logo.svg"/>
-            </header>
-
-            <main>
+        <LoginContent>
+            <LoginHeader/>
+            <LoginMain>
                 <LoginForm {...{setUser}}/>
-            </main>
-        </div>
+            </LoginMain>
+        </LoginContent>
     )
 }

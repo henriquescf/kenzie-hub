@@ -1,7 +1,9 @@
-import { useEffect } from "react";
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { DashboardHeader } from "../components/DashboardHeader";
 import "../styles/dashboard.scss"
+import { DashboardContent } from "../components/DashboardContent"
+import { DashboardHeader } from "../components/DashboardContent/DashboardHeader"
+import { DashboardMain } from "../components/DashboardContent/DashboardMain"
 
 export const Dashboard = ({user, setUser}) => {
     const token = JSON.parse(localStorage.getItem("@User:Token"))
@@ -15,13 +17,9 @@ export const Dashboard = ({user, setUser}) => {
       
     return (
         token &&
-        <div className="dashboard-content">
-            <DashboardHeader {...{user, setUser}}/>
-            
-            <main>
-                <h1>Que pena! Estamos em desenvolvimento {`:(`} </h1>
-                <p>Nossa aplicação está em desenvolvimento, em breve teremos novidades</p>
-            </main>
-        </div>
+        <DashboardContent>
+          <DashboardHeader {...{user, setUser}}/>
+          <DashboardMain/>
+        </DashboardContent>
     )
 }

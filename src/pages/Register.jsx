@@ -1,17 +1,16 @@
-import { Link } from "react-router-dom"
-import { RegisterForm } from "../components/RegisterForm"
 import "../styles/register.scss"
+import { RegisterContent } from "../components/RegisterContent"
+import { RegisterHeader } from "../components/RegisterContent/RegisterHeader"
+import { RegisterMain } from "../components/RegisterContent/RegisterMain"
+import { RegisterForm } from "../components/RegisterContent/RegisterMain/RegisterForm"
 
 export const Register = () => {
     return (
-        <div className="register-content">
-            <header className="register-header">
-                <img src="/Logo.svg"></img>
-                <Link to="/" className={"back-btn"}>Voltar</Link>
-            </header>
-            <main>
+        <RegisterContent>
+            <RegisterHeader/>
+            <RegisterMain>
                 <RegisterForm/>
-            </main>
-        </div>
+            </RegisterMain>
+        </RegisterContent>
     )
 }
