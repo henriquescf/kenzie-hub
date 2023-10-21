@@ -1,13 +1,11 @@
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import {zodResolver} from "@hookform/resolvers/zod"
-import { api } from "../../../../services/api"
-import { toast } from "react-toastify"
-import { useNavigate } from "react-router-dom"
+import { useUserContext } from "../../../../providers/UserContext"
 
 export const RegisterForm = () => {
 
-    const navigate = useNavigate()
+    const { userRegister } = useUserContext() 
 
     const registerSchema = z.object({
         name: z.string().min(1, "Digite um nome."),
@@ -37,22 +35,9 @@ export const RegisterForm = () => {
             contact: data.contact,
             course_module: data.course_module,
           }
-          registerRequest(filteredData)
+          userRegister(filteredData)
       }
-  
-      const registerRequest = async (formData) => {
-          try{
-              const { data } = await api.post("/users", formData)
-              toast.success("Cadastro efetuado com sucesso.")
-              navigate("/")
-          } catch(error){
-              if(error.response.data.message == "Email already exists"){
-                toast.error("Email já existente, tente novamente.")
-            } else{
-                toast.error("Ooops, algo deu errado, tente novamente.")
-            }
-          }
-      }
+     
 
     return (
         <form className="register-form" onSubmit={handleSubmit(submit)}>

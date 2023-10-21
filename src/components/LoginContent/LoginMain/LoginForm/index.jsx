@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { z } from "zod"
 import {zodResolver} from "@hookform/resolvers/zod"
-import { api } from "../../../../services/api"
-import { toast } from "react-toastify"
+import { useUserContext } from "../../../../providers/UserContext"
 
-export const LoginForm = ({setUser}) => {
-    const navigate = useNavigate()
+export const LoginForm = () => {
+
+    const { userLogin } = useUserContext()
 
     const loginSchema = z.object({
       email: z.string().email("Email inválido."),
@@ -20,18 +20,7 @@ export const LoginForm = ({setUser}) => {
     const {register, handleSubmit, formState: {errors}} = useForm({resolver: zodResolver(loginSchema)})
 
     const submit = (data) => {
-        loginRequest(data)
-    }
-
-    const loginRequest = async (formData) => {
-        try{
-            const { data } = await api.post("/sessions", formData)
-            setUser(data.user)
-            localStorage.setItem("@User:Token", JSON.stringify(data))
-            navigate("/dashboard")
-        } catch(error){
-            toast.error("Email ou senha inválidos.")
-        }
+        userLogin(data)
     }
 
     return (

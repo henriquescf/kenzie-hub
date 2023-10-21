@@ -1,21 +1,14 @@
-import { useNavigate } from "react-router-dom"
+import { useUserContext } from "../../../providers/UserContext"
 
-export const DashboardHeader = ({user, setUser}) => {
+export const DashboardHeader = () => {
 
-    const navigate = useNavigate()
-
-    const handleLogout = (e) => {
-        e.preventDefault()
-        localStorage.removeItem("@User:Token")
-        setUser(null)
-        navigate("/")
-    }
+    const { user, userLogout } = useUserContext()
 
     return(
         <header className="dashboard-header">
             <div className="dashboard-header__primary">
                 <img src="/Logo.svg"/>
-                <button onClick={handleLogout}>Sair</button>
+                <button onClick={userLogout}>Sair</button>
             </div>
 
             <div className="dasboard-header__secondary-wrap">
