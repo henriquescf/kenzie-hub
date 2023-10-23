@@ -20,7 +20,7 @@ export const UserProvider = ({children}) => {
         try{
             const { data } = await api.post("/sessions", formData)
             setUser(data.user)
-            localStorage.setItem("@User:Token", JSON.stringify(data))
+            localStorage.setItem("@User:Token", JSON.stringify(data.token))
             navigate("/dashboard")
         } catch(error){
             toast.error("Email ou senha inválidos.")
@@ -55,10 +55,10 @@ export const UserProvider = ({children}) => {
                 try{
                     const { data } = await api.get(`/profile`, {
                         headers: {
-                            Authorization: `Bearer ${token.token}`
+                            Authorization: `Bearer ${token}`
                         }
                     })
-                    setUser(token.user)
+                    setUser(data)
                     navigate("/dashboard")
                 } catch (error) {
                     console.log(error)
