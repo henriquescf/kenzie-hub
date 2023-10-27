@@ -1,0 +1,70 @@
+.modalOverlay {
+    position: fixed;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    inset: 0;
+  
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+  
+    .modalBox {
+      position: relative;
+      max-width: 23.0625rem;
+      max-height: 21.375rem;
+      width: 100%;
+      height: 100%;
+      background-color: var(--secondary-grey);
+      border-radius: 0.25rem;
+  
+      .createTechModal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 1.25rem;
+        background-color: #343B41;
+        border-radius: 0.25rem 0.25rem 0 0;
+
+        button{
+            color: var(--tertiary-grey);
+            background-color: #343B41;
+            border: transparent;
+            font-weight: 600;
+
+            &:hover{
+                opacity: .8;
+            }
+        }
+      }
+
+      .createTechModal-main{
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        padding: 0.75rem 1.375rem;
+
+        input, select, option {
+            color: var(--quaternary-grey)
+        }
+
+        input, select{
+            height: 3rem;
+            padding: 0px 1rem; 
+        }
+
+        .editMode{
+          color: var(--tertiary-grey);
+          border: transparent;
+        }
+
+        button{
+            height: 3rem;
+            padding: 0px 1.375rem; 
+        }
+      }
+    }
+  }
+  

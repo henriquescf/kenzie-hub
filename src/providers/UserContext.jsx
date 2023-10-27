@@ -14,11 +14,14 @@ export const UserProvider = ({children}) => {
     const storagedData = JSON.parse(localStorage.getItem("@User:Token"))
     const [user, setUser] = useState(storagedData ? storagedData.user : null)
 
+    const [techList, setTechList] = useState([])
+
     const navigate = useNavigate()
 
     const userLogin = async (formData) => {
         try{
             const { data } = await api.post("/sessions", formData)
+            setTechList(data.user.techs)
             setUser(data.user)
             localStorage.setItem("@User:Token", JSON.stringify(data.token))
             navigate("/dashboard")
@@ -59,6 +62,7 @@ export const UserProvider = ({children}) => {
                         }
                     })
                     setUser(data)
+                    setTechList(data.techs)
                     navigate("/dashboard")
                 } catch (error) {
                     console.log(error)
@@ -71,7 +75,7 @@ export const UserProvider = ({children}) => {
       }, [])
 
     return (
-        <UserContext.Provider value = {{userLogin, userRegister, userLogout, user, setUser}}>
+        <UserContext.Provider value = {{userLogin, userRegister, userLogout, user, setUser, techList, setTechList}}>
             {children}
         </UserContext.Provider>
     )
